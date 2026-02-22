@@ -12,70 +12,82 @@
 /* ===== GLOBAL ===== */
 
 body {
-  background: #000000;
-  color: #e8f5e9;
-  font-family: 'Lora', serif;
   margin: 0;
   padding: 0;
+  background: #000;
+  color: #eafff5;
+  font-family: 'Lora', serif;
+  overflow-x: hidden;
 }
 
-/* Subtle light particle texture */
-body::after {
+/* Sparkle background */
+body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-    rgba(60, 255, 179, 0.04) 1px,
-    transparent 1px
-  );
-  background-size: 40px 40px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,255,150,0.3) 1px, transparent 2px),
+    radial-gradient(circle at 80% 60%, rgba(0,255,180,0.4) 1px, transparent 2px),
+    radial-gradient(circle at 50% 80%, rgba(0,255,120,0.2) 1px, transparent 2px);
+  background-size: 200px 200px;
+  animation: sparkleMove 20s linear infinite;
   pointer-events: none;
+}
+
+@keyframes sparkleMove {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-200px); }
+}
+
+/* Mouse glow effect */
+.mouse-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,150,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
 }
 
 /* ===== HEADER ===== */
 
 header {
-  background: linear-gradient(135deg, #000000, #052e1c);
-  padding: 60px 20px;
+  padding: 70px 20px;
   text-align: center;
-  border-bottom: 1px solid rgba(60, 255, 179, 0.2);
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 48px;
+  font-size: 50px;
+  color: #00ff9d;
+  text-shadow: 0 0 25px rgba(0,255,150,0.9);
   margin: 0;
-  color: #b8ffd9;
-  text-shadow: 0 0 20px rgba(60, 255, 179, 0.4);
 }
 
 .tagline {
-  margin-top: 10px;
-  font-size: 14px;
   letter-spacing: 2px;
+  margin-top: 10px;
   opacity: 0.8;
 }
 
 /* ===== NAV ===== */
 
 nav {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 nav a {
-  color: #3cffb3;
+  color: #00ffb3;
   text-decoration: none;
-  margin: 0 15px;
-  font-size: 14px;
-  letter-spacing: 1px;
+  margin: 0 20px;
   transition: 0.3s ease;
 }
 
 nav a:hover {
-  text-shadow: 0 0 8px rgba(60, 255, 179, 0.8);
+  text-shadow: 0 0 15px #00ffb3;
 }
 
 /* ===== MAIN ===== */
@@ -84,71 +96,70 @@ main {
   padding: 60px 20px;
 }
 
-/* ===== GLASS POST CARD ===== */
+/* ===== GLASS CARD ===== */
 
 .post-card {
   position: relative;
   overflow: hidden;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 45px;
+  border-radius: 30px;
 
   background: linear-gradient(
     145deg,
-    rgba(20, 92, 58, 0.6),
-    rgba(15, 61, 46, 0.4)
+    rgba(0,255,150,0.25),
+    rgba(0,100,60,0.3)
   );
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 
-  border-radius: 25px;
-  padding: 40px;
-  margin: 40px auto;
-  width: 80%;
-  max-width: 800px;
-
-  border: 1px solid rgba(158, 217, 179, 0.2);
+  border: 1px solid rgba(0,255,150,0.4);
 
   box-shadow:
-    0 0 40px rgba(20, 255, 150, 0.15),
-    inset 0 0 30px rgba(255, 255, 255, 0.05);
+    0 0 60px rgba(0,255,150,0.4),
+    inset 0 0 40px rgba(255,255,255,0.1);
 
   transition: 0.4s ease;
 }
 
 .post-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   box-shadow:
-    0 0 60px rgba(20, 255, 150, 0.25),
-    inset 0 0 40px rgba(255, 255, 255, 0.08);
+    0 0 90px rgba(0,255,150,0.7),
+    inset 0 0 60px rgba(255,255,255,0.15);
 }
 
-/* Glossy shine overlay */
+/* Animated gloss sweep */
 .post-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-
+  top: -50%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
   background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.05),
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
     transparent
   );
-
-  border-radius: 25px;
-  pointer-events: none;
+  transform: rotate(25deg);
+  animation: shine 6s infinite;
 }
 
-/* ===== TYPOGRAPHY ===== */
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
 
 h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  color: #00ffb3;
+  text-shadow: 0 0 20px rgba(0,255,150,0.7);
   margin-top: 0;
-  color: #b8ffd9;
-  text-shadow: 0 0 15px rgba(60, 255, 179, 0.4);
 }
 
 .meta {
@@ -158,21 +169,19 @@ h2 {
 }
 
 a {
-  color: #3cffb3;
+  color: #00ffc3;
   text-decoration: none;
-  transition: 0.3s ease;
 }
 
 a:hover {
-  text-shadow: 0 0 8px rgba(60, 255, 179, 0.8);
+  text-shadow: 0 0 12px #00ffc3;
 }
 
 /* ===== FOOTER ===== */
 
 footer {
   text-align: center;
-  padding: 40px 20px;
-  border-top: 1px solid rgba(60, 255, 179, 0.15);
+  padding: 40px;
   font-size: 13px;
   opacity: 0.7;
 }
@@ -181,6 +190,8 @@ footer {
 </head>
 
 <body>
+
+<div class="mouse-glow"></div>
 
 <header>
   <h1>Velvet Core</h1>
@@ -207,21 +218,20 @@ footer {
     <a href="#">Read More →</a>
   </article>
 
-  <article class="post-card">
-    <h2>The Greenhouse Effect</h2>
-    <p class="meta">Field Notes</p>
-    <p>
-      Intellectual spaces should feel lush, layered, and alive.
-      Not sterile. Not beige. Thought thrives in depth.
-    </p>
-    <a href="#">Read More →</a>
-  </article>
-
 </main>
 
 <footer>
   © 2026 Velvet Core
 </footer>
+
+<script>
+const glow = document.querySelector('.mouse-glow');
+
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+</script>
 
 </body>
 </html>
