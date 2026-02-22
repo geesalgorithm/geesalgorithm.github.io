@@ -1,55 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Blog Name</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Core</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+body {
+  background: #000000;
+  color: #e8f5e9;
+  font-family: 'Lora', serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Subtle light particle texture */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    rgba(60, 255, 179, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ===== HEADER ===== */
+
+header {
+  background: linear-gradient(135deg, #000000, #052e1c);
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(60, 255, 179, 0.2);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  margin: 0;
+  color: #b8ffd9;
+  text-shadow: 0 0 20px rgba(60, 255, 179, 0.4);
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+/* ===== NAV ===== */
+
+nav {
+  margin-top: 25px;
+}
+
+nav a {
+  color: #3cffb3;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  text-shadow: 0 0 8px rgba(60, 255, 179, 0.8);
+}
+
+/* ===== MAIN ===== */
+
+main {
+  padding: 60px 20px;
+}
+
+/* ===== GLASS POST CARD ===== */
+
+.post-card {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(20, 92, 58, 0.6),
+    rgba(15, 61, 46, 0.4)
+  );
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 25px;
+  padding: 40px;
+  margin: 40px auto;
+  width: 80%;
+  max-width: 800px;
+
+  border: 1px solid rgba(158, 217, 179, 0.2);
+
+  box-shadow:
+    0 0 40px rgba(20, 255, 150, 0.15),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
+
+  transition: 0.4s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 60px rgba(20, 255, 150, 0.25),
+    inset 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+/* Glossy shine overlay */
+.post-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+
+  border-radius: 25px;
+  pointer-events: none;
+}
+
+/* ===== TYPOGRAPHY ===== */
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-top: 0;
+  color: #b8ffd9;
+  text-shadow: 0 0 15px rgba(60, 255, 179, 0.4);
+}
+
+.meta {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+a {
+  color: #3cffb3;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 8px rgba(60, 255, 179, 0.8);
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(60, 255, 179, 0.15);
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Emerald Archive</h1>
+  <h1>Velvet Core</h1>
   <p class="tagline">Research • Culture • Power • Aesthetic</p>
-</header>
 
-<nav>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Archive</a></li>
-    <li><a href="#">Field Notes</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a href="#">Archive</a>
+    <a href="#">About</a>
+    <a href="#">Field Notes</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
 <main>
 
-  <section class="post-card">
-    <h2>The Repackaging of Culture as Currency</h2>
+  <article class="post-card">
+    <h2>Emerald as Currency</h2>
     <p class="meta">February 2026 • Cultural Analysis</p>
     <p>
-      From Seoul to SoHo, the repackaging of culture as aesthetic is currency...
+      The repackaging of culture as aesthetic is currency.
+      Some extract. Others curate. The difference lies in intention,
+      authorship, and who profits from the shine.
     </p>
-    <a href="#" class="read-more">Read Essay</a>
-  </section>
+    <a href="#">Read More →</a>
+  </article>
 
-  <section class="post-card">
-    <h2>Velvet, Power, and the Architecture of Luxury</h2>
-    <p class="meta">February 2026 • Art & Power</p>
+  <article class="post-card">
+    <h2>The Greenhouse Effect</h2>
+    <p class="meta">Field Notes</p>
     <p>
-      Emerald has always symbolized wealth, mysticism, and control...
+      Intellectual spaces should feel lush, layered, and alive.
+      Not sterile. Not beige. Thought thrives in depth.
     </p>
-    <a href="#" class="read-more">Read Essay</a>
-  </section>
+    <a href="#">Read More →</a>
+  </article>
 
 </main>
 
 <footer>
-  <p>© 2026 Emerald Archive</p>
+  © 2026 Velvet Core
 </footer>
-
-</body>
-</html>
 
 </body>
 </html>
